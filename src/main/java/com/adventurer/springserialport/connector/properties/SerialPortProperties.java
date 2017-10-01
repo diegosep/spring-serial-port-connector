@@ -19,12 +19,10 @@ class SerialPortProperties {
     /**
      * Port used in the application
      */
-    @NonNull
     private String portName;
 
     /**
      * This is the baudRate to use for read and write data in the serial port
      */
-    @NonNull
     private int baudRate;
 }

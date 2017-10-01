@@ -20,7 +20,19 @@ This library needs two properties
 springSerialPortConnector.portName= #Serial port name, depends on your operative system
 springSerialPortConnector.baudRate= #Baud serial rate transmition 
 ```
+### Implementation
+Implement a Spring bean from this class **AbstractSpringSerialPortConnector** and override
+the following method
 
+```   
+/**
+     * This method must implemented with logic that you want execute at the moment to read
+     * information from the serial port
+     *
+     * @param line
+     */
+    public abstract void processData(String line);
+```
 ### Example
 
 For a Linux System

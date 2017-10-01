@@ -1,6 +1,5 @@
 package com.adventurer.springserialport.connector;
 
-import com.adventurer.springserialport.connector.SpringSerialPortConnector;
 import com.adventurer.springserialport.connector.properties.SerialPortProperties;
 import gnu.io.NRSerialPort;
 import gnu.io.NoSuchPortException;
@@ -35,13 +34,13 @@ public abstract class AbstractSpringSerialPortConnector implements SpringSerialP
 
     @PostConstruct
     public void connect() throws TooManyListenersException, NoSuchPortException {
-        log.info("ArduinoConnection PostConstruct callback: connecting to Arduino...");
+        log.info("Connection PostConstruct callback: connecting ...");
 
         serial = new NRSerialPort(serialPortProperties.getPortName(), serialPortProperties.getBaudRate());
         serial.connect();
 
         if (serial.isConnected()) {
-            log.info("Arduino connection opened!");
+            log.info("Connection opened!");
         } else {
             throw new RuntimeException("Is not possible to open connection in " + serialPortProperties.getPortName() + " port");
         }
@@ -53,31 +52,27 @@ public abstract class AbstractSpringSerialPortConnector implements SpringSerialP
     @PreDestroy
     public void disconnect() {
 
-        log.info("ArduinoConnection PreDestroy callback: disconnecting from Arduino...");
+        log.info("Connection PreDestroy callback: disconnecting ...");
 
         if (serial != null && serial.isConnected()) {
             serial.disconnect();
 
             if (!serial.isConnected()) {
-                log.info("Arduino connection closed!");
+                log.info("Connection closed!");
             }
         }
     }
 
 
     @Override
-    public void sendMessage(String message) throws IOException {
+    public synchronized void sendMessage(String message) throws IOException {
         DataOutputStream stream = new DataOutputStream(serial.getOutputStream());
         stream.write(message.getBytes());
-        log.info("Enviando a arduino: {} ", message);
     }
 
     @Override
-    public void serialEvent(SerialPortEvent serialPortEvent) {
-        log.info("Leyendo");
-
+    public synchronized void serialEvent(SerialPortEvent serialPortEvent) {
         if (serialPortEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
-            log.info("Datos disponibles");
             try {
                 if (input.ready()) {
                     processData(input.readLine());
@@ -89,5 +84,11 @@ public abstract class AbstractSpringSerialPortConnector implements SpringSerialP
         }
     }
 
-    protected abstract void processData(String line);
+    /**
+     * This method must implemented with logic that you want execute at the moment to read
+     * information from the serial port
+     *
+     * @param line
+     */
+    public abstract void processData(String line);
 }
