@@ -31,5 +31,5 @@ springSerialPortConnector.baudRate=9600
 
 ## Authors
 @diego522
-@lopita
+@colopezfuentes
 
