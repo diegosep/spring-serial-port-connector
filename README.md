@@ -42,6 +42,7 @@ springSerialPortConnector.baudRate=9600
 ```
 
 ## Authors
-@diegosep
-@colopezfuentes
+[@colopezfuentes]: https://github.com/colopezfuentes
+[@diegosep]:https://github.com/diegosep
+
 
