@@ -8,7 +8,7 @@ Is a Spring library to read/write a serial/usb port in your Spring App. Based on
 
 ```
 <dependency>
-    <groupId>com.adventurer</groupId>
+    <groupId>com.github.diegosep</groupId>
     <artifactId>spring-serial-port-connector</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 </dependency>
