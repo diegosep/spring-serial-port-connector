@@ -17,8 +17,8 @@ import java.io.InputStreamReader;
 import java.util.TooManyListenersException;
 
 /**
- * @Author Claudia López
- * @Author Diego Sepúlveda
+ * @author Claudia López
+ * @author Diego Sepúlveda
  */
 public abstract class AbstractSpringSerialPortConnector implements SpringSerialPortConnector {
 
@@ -88,7 +88,7 @@ public abstract class AbstractSpringSerialPortConnector implements SpringSerialP
      * This method must implemented with logic that you want execute at the moment to read
      * information from the serial port
      *
-     * @param line
+     * @param line input data that comes from Serial port
      */
     public abstract void processData(String line);
 }

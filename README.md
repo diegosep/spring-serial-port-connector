@@ -10,9 +10,23 @@ Is a Spring library to read/write a serial/usb port in your Spring App. Based on
 <dependency>
     <groupId>com.github.diegosep</groupId>
     <artifactId>spring-serial-port-connector</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-RELEASE</version>
 </dependency>
 ```
+
+###Optional 
+Could be needed add this repository in you maven POM file
+
+```
+<repositories>
+  <repository>
+    <id>sonatype</id>
+    <url>https://oss.sonatype.org/service/local/repositories/releases/content</url>
+  </repository>
+</repositories>
+
+```
+
 ## How to use it
 This library needs two properties
 
@@ -41,7 +55,7 @@ springSerialPortConnector.portName=/dev/ttyACM0
 springSerialPortConnector.baudRate=9600
 ```
 
-## Authors
+## authors
 [@colopezfuentes](https://github.com/colopezfuentes)
 [@diegosep](https://github.com/diegosep)
 

@@ -4,8 +4,8 @@ import gnu.io.SerialPortEventListener;
 
 import java.io.IOException;
 /**
- * @Author Claudia López
- * @Author Diego Sepúlveda
+ * @author Claudia López
+ * @author Diego Sepúlveda
  */
 public interface SpringSerialPortConnector extends SerialPortEventListener {
 

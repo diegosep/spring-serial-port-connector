@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 
 /**
- * @Author Claudia López
- * @Author Diego Sepúlveda
+ * @author Claudia López
+ * @author Diego Sepúlveda
  */
 
 @Component
